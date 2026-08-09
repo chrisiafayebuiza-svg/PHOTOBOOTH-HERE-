@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>My Photobooth</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background: #f7eee7;
+            padding: 30px 15px;
+        }
+
+        h1 {
+            font-size: 32px;
+        }
+
+        video {
+            width: 100%;
+            max-width: 500px;
+            border-radius: 20px;
+            transform: scaleX(-1);
+            background: black;
+        }
+
+        button {
+            margin-top: 20px;
+            padding: 15px 25px;
+            border: 2px solid black;
+            border-radius: 15px;
+            background: #ffb6d5;
+            font-size: 17px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+
+<h1>📸 POV: YOU'RE THE MAIN CHARACTER</h1>
+
+<p>Take pics. Make memories. Keep the chaos.</p>
+
+<video id="camera" autoplay playsinline></video>
+
+<br>
+
+<button onclick="startCamera()">📸 START CAMERA</button>
+
+<script>
+
+async function startCamera() {
+
+    const video = document.getElementById("camera");
+
+    try {
+
+        const stream = await navigator.mediaDevices.getUserMedia({
+            video: true
+        });
+
+        video.srcObject = stream;
+
+    } catch (error) {
+
+        alert("Camera permission was denied.");
+
+    }
+
+}
+
+</script>
+
+</body>
+</html>
